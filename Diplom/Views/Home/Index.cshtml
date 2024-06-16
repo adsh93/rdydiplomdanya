@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Diplom.Models.Entity.Consultation>;
+
+
+
+<div class="text-center">
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="text-end">
+            <button href="/Admin" type="button" class="btn btn-outline-dark me-2">
+                <a class="px-2 text-black" style="text-decoration:none" asp-controller="Home" asp-action="GetUsers">Управление</a>
+            </button>
+        </div>
+        <div class="text-end">
+            <button href="/Admin" type="button" class="btn btn-outline-dark me-2">
+                <a class="px-2 text-black" style="text-decoration:none" asp-controller="Account" asp-action="Register">Создать учетную запись</a>
+            </button>
+        </div>
+    }
+    <div class="text-center" style="height:100%">
+        <div style="padding-top: 40px; padding-bottom: 40px">
+            <h1>Список консультаций</h1>
+        </div>
+      <div>
+          <div style="text-align:center">
+            <div style="margin-left:250px">
+             <div class="card text-center" style="width: 50rem;">
+                   <ul class="list-group list-group-flush">
+                      @foreach(var cons in Model){
+                         
+                           <li class="list-group-item">
+                                <p style="font-family: cursive">@cons.Name</p>
+                                    <button type="button" class="btn btn-info">
+                                        <a class="px-2 text-black" style="text-decoration:none" asp-controller="Home" asp-action="GetConsultation" asp-route-id="@cons.Id">Посмотреть</a>
+                                    </button>
+                           </li>          
+                       }
+                 </ul>
+             </div>
+            </div>
+          </div>
+
+
+           
+
+      </div>
+    </div>
+
+    
+
+</div>
+
+
+
+
